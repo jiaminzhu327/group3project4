@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+<Pane fx:id="sign_up_page" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1000.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="SignupController">
+   <children>
+      <AnchorPane fx:id="sign_up_anchor" prefHeight="1000.0" prefWidth="1000.0">
+         <children>
+            <Label fx:id="sign_up_title" layoutX="278.0" layoutY="28.0" text="Create an account" textAlignment="CENTER">
+               <font>
+                  <Font size="56.0" />
+               </font>
+            </Label>
+            <TextField fx:id="sign_up_firstName" layoutX="266.0" layoutY="188.0" prefHeight="45.0" prefWidth="470.0" promptText="First Name">
+               <font>
+                  <Font size="20.0" />
+               </font></TextField>
+            <TextField fx:id="sign_up_lastName" layoutX="265.0" layoutY="266.0" prefHeight="45.0" prefWidth="470.0" promptText="Last Name">
+               <font>
+                  <Font size="20.0" />
+               </font></TextField>
+            <TextField fx:id="sign_up_email" layoutX="265.0" layoutY="424.0" prefHeight="45.0" prefWidth="470.0" promptText="Email">
+               <font>
+                  <Font size="20.0" />
+               </font></TextField>
+            <TextField fx:id="sign_up_username" layoutX="265.0" layoutY="507.0" onMouseExited="#checkUsername" prefHeight="45.0" prefWidth="470.0" promptText="Username">
+               <font>
+                  <Font size="20.0" />
+               </font></TextField>
+            <TextField fx:id="sign_up_age" layoutX="265.0" layoutY="344.0" prefHeight="45.0" prefWidth="470.0" promptText="Age">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </TextField>
+            <PasswordField fx:id="sign_up_password" layoutX="266.0" layoutY="590.0" prefHeight="45.0" prefWidth="470.0" promptText="Password">
+               <font>
+                  <Font size="20.0" />
+               </font></PasswordField>
+            <PasswordField fx:id="sign_up_confirmPassword" layoutX="266.0" layoutY="670.0" onKeyReleased="#matchPasswords" prefHeight="45.0" prefWidth="470.0" promptText="Confirm Password">
+               <font>
+                  <Font size="20.0" />
+               </font></PasswordField>
+            <Button fx:id="sign_up_registerButton" layoutX="309.0" layoutY="795.0" mnemonicParsing="false" onAction="#registerUser" prefHeight="45.0" prefWidth="165.0" text="Sign Up">
+               <font>
+                  <Font size="22.0" />
+               </font></Button>
+            <Button fx:id="sign_up_cancelButton" layoutX="525.0" layoutY="795.0" mnemonicParsing="false" onAction="#cancelRegistration" prefHeight="45.0" prefWidth="165.0" text="Back">
+               <font>
+                  <Font size="22.0" />
+               </font></Button>
+            <Label fx:id="username_avail" layoutX="747.0" layoutY="514.0" text="Username already taken." textFill="RED" visible="false">
+               <font>
+                  <Font size="22.0" />
+               </font></Label>
+            <Label fx:id="passwordMatches" layoutX="775.0" layoutY="677.0" text="Password matches!" textFill="#00ff3c" visible="false">
+               <font>
+                  <Font size="22.0" />
+               </font></Label>
+            <Label fx:id="passwordDoesntMatch" layoutX="750.0" layoutY="677.0" text="Password do not match." textFill="RED" visible="false">
+               <font>
+                  <Font size="22.0" />
+               </font></Label>
+            <Label layoutX="381.0" layoutY="123.0" text="*Please fill all the following fileds*" textFill="RED">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
+   </children>
+</Pane>

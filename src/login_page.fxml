@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane fx:id="login_anchor" prefHeight="800.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="LoginController">
+   <children>
+      <Label fx:id="login_title" layoutX="97.0" layoutY="79.0" text="Welcome to FacebookLite">
+         <font>
+            <Font size="64.0" />
+         </font>
+      </Label>
+      <TextField fx:id="login_username" layoutX="235.0" layoutY="278.0" prefHeight="45.0" prefWidth="430.0" promptText="username" />
+      <PasswordField fx:id="login_password" layoutX="235.0" layoutY="378.0" prefHeight="45.0" prefWidth="430.0" promptText="password" />
+      <Button fx:id="login_button" layoutX="375.0" layoutY="527.0" mnemonicParsing="false" onAction="#checkCredentials" prefHeight="48.0" prefWidth="150.0" text="Login">
+         <font>
+            <Font size="22.0" />
+         </font>
+      </Button>
+      <Button fx:id="sign_up_button" layoutX="375.0" layoutY="633.0" mnemonicParsing="false" onAction="#loadSignUpPage" prefHeight="48.0" prefWidth="150.0" text="Sign Up">
+         <font>
+            <Font size="22.0" />
+         </font>
+      </Button>
+      <Label fx:id="login_error" layoutX="300.0" layoutY="480.0" text="Invalid Account, check your username and password!" textAlignment="CENTER" textFill="RED" visible="false" />
+      <Text fontSmoothingType="LCD" layoutX="391.0" layoutY="616.0" strokeType="OUTSIDE" strokeWidth="0.0" text="New Here?" wrappingWidth="117.748046875">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Text>
+      <Text layoutX="235.0" layoutY="259.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Username:" />
+      <Text layoutX="235.0" layoutY="357.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Password:" />
+   </children>
+</AnchorPane>
