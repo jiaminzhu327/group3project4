@@ -56,6 +56,8 @@ public class ProfileController {
     @FXML
     private void logoutOfApplication(ActionEvent event) throws IOException {
         //System.out.println("You have logged out.");
+        LoginController.userName = "";
+        LoginController.currentUserID = 0;
         Parent signUpPageParent = FXMLLoader.load(getClass().getResource("login_page.fxml"));
         Scene signUpPageScene = new Scene(signUpPageParent);
         Stage stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
@@ -102,6 +104,26 @@ public class ProfileController {
     @FXML
     private void addPost(){
         showInfo(LoginController.userName);
+        if(udb_statusArea.getText().length() < 1){
+            return;
+        }
+        Date sqlNow = new Date(System.currentTimeMillis());
+        udb_PostsListView.getItems().add(0, String.format("%1$-10s:", udb_statusArea.getText() + "\t" + sqlNow + " " + sqlNow.getTime()));
+        try {
+            Class.forName("com.mysql.jdbc.Driver");
+            //Change information into yours
+            Connection myConn = DriverManager.getConnection("jdbc:mysql://localhost:3306/COMP585?autoReconnect=true&useSSL=false", "root", "root");
+            System.out.println("Successfully connected");
+            String sql = "Insert into Posts (UserID, Post, Date_Posted) values (?, ?, ?);";
+            PreparedStatement st = myConn.prepareStatement(sql);
+            st.setInt(1, LoginController.currentUserID);
+            st.setString(2, udb_statusArea.getText());
+            st.setDate(3, sqlNow);
+            st.executeUpdate();
+        }catch(Exception e){
+            System.out.println("Connection Failed");
+            System.out.println(e);
+        }
     }
 
     public void showInfo(String userName){

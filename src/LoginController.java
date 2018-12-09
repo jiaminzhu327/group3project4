@@ -19,6 +19,7 @@ import javafx.stage.Stage;
 public class LoginController {
     ProfileController profileControllerInstance = new ProfileController();
     static String userName = "";
+    static int currentUserID;
     String password = "";
     
     @FXML
@@ -74,8 +75,8 @@ public class LoginController {
                 if(rs.getString("Password").equals(password)){
                     System.out.println("Successfully Logged in");
                     System.out.println("Current User:" + userName);
-                    int currentUserID = rs.getInt("UserID");
-                    String currentUserName = userName;
+                    currentUserID = rs.getInt("UserID");
+                    //String currentUserName = userName;
                     loadUserDashBoard(event);
                 }else{
                     System.out.println("Password is not correct");
@@ -83,6 +84,7 @@ public class LoginController {
                 }
             }else if(check == 0){
                 System.out.println("The Username does not exist");
+                currentUserID = 0;
                 userName = "";
                 password = "";
                 login_error.setVisible(true);
