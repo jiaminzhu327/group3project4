@@ -7,7 +7,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ResetController">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="450.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ResetController">
    <children>
       <Label layoutX="136.0" layoutY="29.0" text="Reset your password">
          <font>
@@ -18,7 +18,9 @@
       <TextField fx:id="userName" layoutX="147.0" layoutY="146.0" prefHeight="39.0" prefWidth="307.0" />
       <Label layoutX="73.0" layoutY="200.0" text="Enter your new password:" />
       <TextField fx:id="newPassword" layoutX="147.0" layoutY="236.0" prefHeight="39.0" prefWidth="307.0" />
-      <Button fx:id="resetpwd_button" layoutX="164.0" layoutY="307.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="93.0" text="Reset" />
-      <Button fx:id="close_button" layoutX="331.0" layoutY="307.0" mnemonicParsing="false" onAction="#handleCloseButtonAction" prefHeight="39.0" prefWidth="93.0" text="Close" />
+      <Button fx:id="resetpwd_button" layoutX="164.0" layoutY="346.0" mnemonicParsing="false" onAction="#updatePassword" prefHeight="39.0" prefWidth="93.0" text="Reset" />
+      <Button fx:id="close_button" layoutX="331.0" layoutY="346.0" mnemonicParsing="false" onAction="#handleCloseButtonAction" prefHeight="39.0" prefWidth="93.0" text="Close" />
+      <Label fx:id="notFound_label" layoutX="59.0" layoutY="296.0" text="*The username doesn't exist. Please input correct username.*" textFill="RED" visible="false" />
+      <Label fx:id="successed_label" layoutX="160.0" layoutY="296.0" text="Your password is successfully reset!" textFill="#3300ff" visible="false" />
    </children>
 </Pane>

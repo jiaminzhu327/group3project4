@@ -87,6 +87,17 @@ public class ProfileController {
     }
 
     @FXML
+    private void openAddFriend() throws IOException{
+        Parent signUpPageParent = FXMLLoader.load(getClass().getResource("addfriend_page.fxml"));
+        Scene signUpPageScene = new Scene(signUpPageParent);
+        Stage stage = new Stage();
+
+        stage.setResizable(false);
+        stage.setScene(signUpPageScene);
+        stage.show();
+    }
+
+    @FXML
     private void editStatus(){
         if(!udb_statusArea.isEditable()){ // Editable is false
             udb_statusArea.setEditable(true);

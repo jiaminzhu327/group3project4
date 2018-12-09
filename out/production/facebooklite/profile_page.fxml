@@ -59,7 +59,7 @@
                         <Font size="22.0" />
                      </font>
                   </Button>
-                  <Button layoutX="1547.0" layoutY="408.0" mnemonicParsing="false" prefHeight="55.0" prefWidth="164.0" text="Add Friend">
+                  <Button fx:id="addFriend_button" layoutX="1547.0" layoutY="408.0" mnemonicParsing="false" onAction="#openAddFriend" prefHeight="55.0" prefWidth="164.0" text="Add Friend">
                      <font>
                         <Font size="22.0" />
                      </font>
