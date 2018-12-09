@@ -29,7 +29,7 @@
          <font>
             <Font size="22.0" />
          </font></CheckBox>
-      <Button fx:id="settings_applySettings" layoutX="251.0" layoutY="298.0" mnemonicParsing="false" onAction="#applyUserSettings" text="Apply">
+      <Button fx:id="settings_applySettings" layoutX="250.0" layoutY="300.0" mnemonicParsing="false" onAction="#applyUserSettings" text="Apply">
          <font>
             <Font size="22.0" />
          </font></Button>

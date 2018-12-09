@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ResetController">
+   <children>
+      <Label layoutX="136.0" layoutY="29.0" text="Reset your password">
+         <font>
+            <Font size="36.0" />
+         </font>
+      </Label>
+      <Label layoutX="73.0" layoutY="108.0" text="Enter your username:" />
+      <TextField fx:id="userName" layoutX="147.0" layoutY="146.0" prefHeight="39.0" prefWidth="307.0" />
+      <Label layoutX="73.0" layoutY="200.0" text="Enter your new password:" />
+      <TextField fx:id="newPassword" layoutX="147.0" layoutY="236.0" prefHeight="39.0" prefWidth="307.0" />
+      <Button fx:id="resetpwd_button" layoutX="164.0" layoutY="307.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="93.0" text="Reset" />
+      <Button fx:id="close_button" layoutX="331.0" layoutY="307.0" mnemonicParsing="false" onAction="#handleCloseButtonAction" prefHeight="39.0" prefWidth="93.0" text="Close" />
+   </children>
+</Pane>

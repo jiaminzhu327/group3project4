@@ -32,5 +32,6 @@
       </Text>
       <Text layoutX="235.0" layoutY="259.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Username:" />
       <Text layoutX="235.0" layoutY="357.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Password:" />
+      <Button fx:id="reset_button" layoutX="348.0" layoutY="441.0" mnemonicParsing="false" onAction="#loadResetPage" style="-fx-background-color: transparent;" text="Forget your password?" textFill="#0400ff" underline="true" />
    </children>
 </AnchorPane>

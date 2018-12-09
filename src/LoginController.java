@@ -35,6 +35,9 @@ public class LoginController {
     private Button sign_up_button;
 
     @FXML
+    private Button reset_button;
+
+    @FXML
     private Label login_error;
     
     @FXML
@@ -51,7 +54,20 @@ public class LoginController {
         stage.setScene(signUpPageScene);
         stage.show();
     }
-    
+
+    @FXML
+    private void loadResetPage(ActionEvent event) throws IOException{
+        Parent signUpPageParent = FXMLLoader.load(getClass().getResource("reset_page.fxml"));
+        Scene signUpPageScene = new Scene(signUpPageParent);
+        Stage stage = new Stage();
+
+
+        stage.setResizable(false);
+        stage.setScene(signUpPageScene);
+        stage.show();
+
+    }
+
     @FXML
     private void checkCredentials(ActionEvent event) throws IOException{
         //System.out.println("Login!");

@@ -2,34 +2,27 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/src/sample/Profilepage.fxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/sample/Signuppage.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/FacebookLite/FacebookLite.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/FacebookLite/Friends.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/FacebookLite/IDisplay.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/FacebookLite/Person.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/FacebookLite/Profile.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/FacebookLite/Stack.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/FacebookLite/User.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/FacebookLite/Util.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/FacebookLite/Wall.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/FacebookLite/sample/Controller.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/FacebookLite/sample/Controller.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/FacebookLite/sample/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/FacebookLite/sample/Main.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/FacebookLite/sample/sample.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/FacebookLite/sample/sample.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/Controller.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/FacebookLite.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/FacebookLite.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/Friends.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/Friends.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/IDisplay.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/IDisplay.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/Person.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/Person.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/Profile.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/Profile.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/Stack.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/Stack.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/User.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/Util.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/Util.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/Wall.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/Wall.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/sample.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/sample.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/facebooklite/LoginController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/facebooklite/LoginController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/facebooklite/login_page.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/facebooklite/login_page.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/facebooklite/settings_page.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/facebooklite/settings_page.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/project4/FacebookLite.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/project4/Friends.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/project4/IDisplay.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/project4/LoginController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/project4/Main.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/project4/Person.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/project4/Profile.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/project4/ProfileController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/project4/SettingsController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/project4/SignupController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/project4/Stack.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/project4/User.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/project4/Util.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/project4/Wall.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/LoginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/LoginController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/login_page.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/login_page.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/settings_page.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/settings_page.fxml" afterDir="false" />
     </list>
     <ignored path="JavaFxApplication.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -222,35 +215,63 @@
         </counts>
       </usages-collector>
     </session>
+    <session id="1975626412">
+      <usages-collector id="statistics.lifecycle.project">
+        <counts>
+          <entry key="project.open.time.1" value="1" />
+          <entry key="project.opened" value="1" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.extensions.open">
+        <counts>
+          <entry key="fxml" value="3" />
+          <entry key="java" value="4" />
+          <entry key="sql" value="1" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.types.open">
+        <counts>
+          <entry key="JAVA" value="4" />
+          <entry key="SQL" value="1" />
+          <entry key="XML" value="3" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.extensions.edit">
+        <counts>
+          <entry key="fxml" value="9" />
+          <entry key="java" value="386" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.types.edit">
+        <counts>
+          <entry key="JAVA" value="386" />
+          <entry key="XML" value="9" />
+        </counts>
+      </usages-collector>
+    </session>
   </component>
   <component name="FavoritesManager">
     <favorites_list name="JavaFxApplication" />
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/SignupController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-477">
-              <caret line="72" lean-forward="true" selection-start-line="72" selection-end-line="72" />
+            <state relative-caret-position="200">
+              <caret line="75" column="27" lean-forward="true" selection-start-line="62" selection-start-column="7" selection-end-line="75" selection-end-column="27" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/settings_page.fxml">
-          <provider editor-type-id="JavaFX-Scene-Builder" />
-          <provider selected="true" editor-type-id="text-editor" />
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/LoginController.java">
+        <entry file="file://$PROJECT_DIR$/src/Main.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-66">
-              <caret line="78" column="22" selection-start-line="78" selection-start-column="22" selection-end-line="78" selection-end-column="22" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
+            <state relative-caret-position="125">
+              <caret line="11" column="67" selection-start-line="11" selection-start-column="67" selection-end-line="11" selection-end-column="67" />
             </state>
           </provider>
         </entry>
@@ -262,10 +283,20 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/ProfileController.java">
+        <entry file="file://$PROJECT_DIR$/src/settings_page.fxml">
+          <provider editor-type-id="JavaFX-Scene-Builder" />
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="726">
-              <caret line="59" column="42" selection-start-line="59" selection-start-column="42" selection-end-line="59" selection-end-column="42" />
+            <state relative-caret-position="825">
+              <caret line="33" column="32" lean-forward="true" selection-start-line="33" selection-start-column="32" selection-end-line="33" selection-end-column="32" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/SettingsController.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-498">
+              <caret column="7" lean-forward="true" selection-start-column="7" selection-end-column="7" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -274,11 +305,54 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/profile_page.fxml">
+        <entry file="file://$PROJECT_DIR$/src/LoginController.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="277">
+              <caret line="58" column="30" selection-start-line="58" selection-start-column="17" selection-end-line="58" selection-end-column="30" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/login_page.fxml">
           <provider editor-type-id="JavaFX-Scene-Builder" />
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="132">
-              <caret line="48" column="65" selection-start-line="48" selection-start-column="65" selection-end-line="48" selection-end-column="65" />
+            <state relative-caret-position="450">
+              <caret line="21" column="119" selection-start-line="21" selection-start-column="93" selection-end-line="21" selection-end-column="119" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/reset_page.fxml">
+          <provider editor-type-id="JavaFX-Scene-Builder" />
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="300">
+              <caret line="15" column="14" lean-forward="true" selection-start-line="15" selection-start-column="14" selection-end-line="15" selection-end-column="14" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/ResetController.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="277">
+              <caret line="37" column="61" selection-start-line="37" selection-start-column="61" selection-end-line="37" selection-end-column="61" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/ProfileController.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="113">
+              <caret line="75" selection-start-line="75" selection-end-line="86" selection-end-column="5" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -289,6 +363,7 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="FxmlFile" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -323,8 +398,12 @@
         <option value="$PROJECT_DIR$/src/sample/Profilepage.fxml" />
         <option value="$PROJECT_DIR$/src/SignupController.java" />
         <option value="$PROJECT_DIR$/src/profile_page.fxml" />
-        <option value="$PROJECT_DIR$/src/LoginController.java" />
         <option value="$PROJECT_DIR$/src/ProfileController.java" />
+        <option value="$PROJECT_DIR$/src/reset_page.fxml" />
+        <option value="$PROJECT_DIR$/src/settings_page.fxml" />
+        <option value="$PROJECT_DIR$/src/LoginController.java" />
+        <option value="$PROJECT_DIR$/src/Main.java" />
+        <option value="$PROJECT_DIR$/src/ResetController.java" />
       </list>
     </option>
   </component>
@@ -334,11 +413,11 @@
     <detection-done>true</detection-done>
     <sorting>DEFINITION_ORDER</sorting>
   </component>
-  <component name="ProjectFrameBounds">
-    <option name="x" value="83" />
-    <option name="y" value="23" />
+  <component name="ProjectFrameBounds" extendedState="7">
+    <option name="x" value="82" />
+    <option name="y" value="22" />
     <option name="width" value="1365" />
-    <option name="height" value="806" />
+    <option name="height" value="807" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectReloadState">
@@ -349,25 +428,35 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="AndroidView" />
-      <pane id="Scope" />
       <pane id="PackagesPane" />
+      <pane id="AndroidView" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
             <path>
-              <item name="group3project4-master-latest" type="b2602c69:ProjectViewProjectNode" />
-              <item name="group3project4-master-latest" type="462c0819:PsiDirectoryNode" />
+              <item name="project4" type="b2602c69:ProjectViewProjectNode" />
+              <item name="project4" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
-              <item name="group3project4-master-latest" type="b2602c69:ProjectViewProjectNode" />
-              <item name="group3project4-master-latest" type="462c0819:PsiDirectoryNode" />
+              <item name="project4" type="b2602c69:ProjectViewProjectNode" />
+              <item name="project4" type="462c0819:PsiDirectoryNode" />
+              <item name="lib" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="project4" type="b2602c69:ProjectViewProjectNode" />
+              <item name="project4" type="462c0819:PsiDirectoryNode" />
+              <item name="mySQL" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="project4" type="b2602c69:ProjectViewProjectNode" />
+              <item name="project4" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -381,7 +470,7 @@
     <property name="OverrideImplement.combined" value="false" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1544306797738" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1544322221435" />
     <property name="dynamic.classpath" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="recentsLimit" value="5" />
@@ -503,17 +592,18 @@
       <workItem from="1544042471145" duration="14444000" />
       <workItem from="1544073320104" duration="771000" />
       <workItem from="1544227761343" duration="4312000" />
+      <workItem from="1544315416201" duration="5655000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="31412000" />
+    <option name="totallyTimeSpent" value="37067000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="83" y="23" width="1365" height="806" extended-state="0" />
+    <frame x="-7" y="-7" width="1721" height="935" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.6703755" visible="true" weight="0.20634921" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.6703755" visible="true" weight="0.20469597" />
       <window_info id="Structure" order="1" weight="0.24959612" />
       <window_info id="Favorites" order="2" />
       <window_info id="Designer" order="3" />
@@ -522,7 +612,7 @@
       <window_info id="Capture Tool" order="6" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.1904762" />
+      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.18952619" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -533,7 +623,7 @@
       <window_info anchor="bottom" id="Changes" order="10" />
       <window_info anchor="bottom" id="Profiler" order="11" />
       <window_info anchor="bottom" id="Event Log" order="12" />
-      <window_info anchor="bottom" id="Messages" order="13" weight="0.32913166" />
+      <window_info anchor="bottom" id="Messages" order="13" weight="0.32793018" />
       <window_info anchor="bottom" id="Database Changes" order="14" />
       <window_info anchor="bottom" id="Terminal" order="15" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
@@ -581,24 +671,19 @@
     <entry file="file://$PROJECT_DIR$/src/sample/Profile.java" />
     <entry file="file://$PROJECT_DIR$/src/sample/Profilepage.fxml" />
     <entry file="file:///Applications/MAMP/htdocs/web-app/App/Views/base.html.twig" />
-    <entry file="file://$PROJECT_DIR$/src/Main.java">
+    <entry file="file://$PROJECT_DIR$/src/FacebookLite.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="225">
-          <caret line="23" selection-start-line="23" selection-end-line="23" />
+        <state relative-caret-position="-4436">
+          <caret line="82" column="13" lean-forward="true" selection-start-line="82" selection-start-column="13" selection-end-line="82" selection-end-column="13" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/login_page.fxml">
-      <provider editor-type-id="JavaFX-Scene-Builder" />
+    <entry file="file://$PROJECT_DIR$/mySQL/COMP585_Database.sql">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="525">
-          <caret line="21" column="119" selection-start-line="21" selection-start-column="93" selection-end-line="21" selection-end-column="119" />
+        <state relative-caret-position="375">
+          <caret line="40" column="21" selection-start-line="40" selection-start-column="21" selection-end-line="40" selection-end-column="21" />
         </state>
       </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/sign_up_page.fxml">
-      <provider editor-type-id="JavaFX-Scene-Builder" />
-      <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/src/profile_page.fxml">
       <provider editor-type-id="JavaFX-Scene-Builder" />
@@ -608,31 +693,46 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/FacebookLite.java">
+    <entry file="file://$PROJECT_DIR$/src/settings_page.fxml">
+      <provider editor-type-id="JavaFX-Scene-Builder" />
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-4436">
-          <caret line="82" column="13" lean-forward="true" selection-start-line="82" selection-start-column="13" selection-end-line="82" selection-end-column="13" />
+        <state relative-caret-position="825">
+          <caret line="33" column="32" lean-forward="true" selection-start-line="33" selection-start-column="32" selection-end-line="33" selection-end-column="32" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/settings_page.fxml">
-      <provider editor-type-id="JavaFX-Scene-Builder" />
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/LoginController.java">
+    <entry file="file://$PROJECT_DIR$/src/ProfileController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-66">
-          <caret line="78" column="22" selection-start-line="78" selection-start-column="22" selection-end-line="78" selection-end-column="22" />
+        <state relative-caret-position="113">
+          <caret line="75" selection-start-line="75" selection-end-line="86" selection-end-column="5" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/ProfileController.java">
+    <entry file="file://$PROJECT_DIR$/src/LoginController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="726">
-          <caret line="59" column="42" selection-start-line="59" selection-start-column="42" selection-end-line="59" selection-end-column="42" />
+        <state relative-caret-position="277">
+          <caret line="58" column="30" selection-start-line="58" selection-start-column="17" selection-end-line="58" selection-end-column="30" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Main.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="125">
+          <caret line="11" column="67" selection-start-line="11" selection-start-column="67" selection-end-line="11" selection-end-column="67" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/sign_up_page.fxml">
+      <provider editor-type-id="JavaFX-Scene-Builder" />
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/SettingsController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-498">
+          <caret column="7" lean-forward="true" selection-start-column="7" selection-end-column="7" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -641,8 +741,37 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/SignupController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-477">
-          <caret line="72" lean-forward="true" selection-start-line="72" selection-end-line="72" />
+        <state relative-caret-position="200">
+          <caret line="75" column="27" lean-forward="true" selection-start-line="62" selection-start-column="7" selection-end-line="75" selection-end-column="27" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/login_page.fxml">
+      <provider editor-type-id="JavaFX-Scene-Builder" />
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="450">
+          <caret line="21" column="119" selection-start-line="21" selection-start-column="93" selection-end-line="21" selection-end-column="119" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/reset_page.fxml">
+      <provider editor-type-id="JavaFX-Scene-Builder" />
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="300">
+          <caret line="15" column="14" lean-forward="true" selection-start-line="15" selection-start-column="14" selection-end-line="15" selection-end-column="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ResetController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="277">
+          <caret line="37" column="61" selection-start-line="37" selection-start-column="61" selection-end-line="37" selection-end-column="61" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
