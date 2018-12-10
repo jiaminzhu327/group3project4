@@ -1,5 +1,6 @@
 import javafx.beans.binding.Bindings;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Rectangle2D;
@@ -10,9 +11,14 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextArea;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.stage.FileChooser;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
+import javafx.stage.Window;
 
+import java.io.File;
 import java.io.IOException;
 import java.sql.*;
 
@@ -52,6 +58,12 @@ public class ProfileController {
     @FXML
     private Button udb_NewPostButton;
 
+    @FXML
+    private Button image_button;
+
+//    @FXML
+//    private ImageView profile_image;
+
 
     @FXML
     private void logoutOfApplication(ActionEvent event) throws IOException {
@@ -62,9 +74,9 @@ public class ProfileController {
         Scene signUpPageScene = new Scene(signUpPageParent);
         Stage stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
 
-        Rectangle2D screenBounds = Screen.getPrimary().getVisualBounds();
-        stage.setX((screenBounds.getWidth() - 720) / 2);
-        stage.setY((screenBounds.getHeight() - 720) / 2);
+//        Rectangle2D screenBounds = Screen.getPrimary().getVisualBounds();
+//        stage.setX((screenBounds.getWidth() - 720) / 2);
+//        stage.setY((screenBounds.getHeight() - 720) / 2);
 
         stage.setResizable(false);
         stage.setScene(signUpPageScene);
@@ -95,6 +107,23 @@ public class ProfileController {
         stage.setResizable(false);
         stage.setScene(signUpPageScene);
         stage.show();
+    }
+
+    @FXML
+    private void editProfileImage() throws IOException{
+        Stage stage = null;
+        final File[] selectedFile = {null};
+
+        image_button.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                FileChooser chooser = new FileChooser();
+                chooser.setTitle("Choose Image");
+                selectedFile[0] = chooser.showOpenDialog(stage);
+                System.out.println(selectedFile[0]);
+            }
+        });
+//        profile_image = new ImageView(selectedFile[0].toString());
     }
 
     @FXML

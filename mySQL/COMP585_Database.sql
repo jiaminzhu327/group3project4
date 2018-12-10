@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Dec 06, 2018 at 01:53 AM
+-- Generation Time: Dec 10, 2018 at 01:06 AM
 -- Server version: 5.7.23
 -- PHP Version: 7.2.8
 
@@ -32,13 +32,6 @@ CREATE TABLE `Authorization` (
   `Date_Created` date NOT NULL,
   `Date_Modified` date DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
--- Dumping data for table `Authorization`
---
-
-INSERT INTO `Authorization` (`UserID`, `Password`, `Date_Created`, `Date_Modified`) VALUES
-(237944169, 'password', '2018-12-05', NULL);
 
 -- --------------------------------------------------------
 
@@ -75,13 +68,6 @@ CREATE TABLE `User` (
   `Date_Created` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
---
--- Dumping data for table `User`
---
-
-INSERT INTO `User` (`UserID`, `Username`, `Date_Created`) VALUES
-(237944169, 'Seiya', '2018-12-05');
-
 -- --------------------------------------------------------
 
 --
@@ -93,15 +79,9 @@ CREATE TABLE `UserInfo` (
   `FirstName` varchar(20) NOT NULL,
   `LastName` varchar(20) NOT NULL,
   `Age` smallint(2) NOT NULL,
-  `Email` varchar(60) NOT NULL
+  `Email` varchar(60) NOT NULL,
+  `Picture` mediumblob
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
--- Dumping data for table `UserInfo`
---
-
-INSERT INTO `UserInfo` (`UserID`, `FirstName`, `LastName`, `Age`, `Email`) VALUES
-(237944169, 'Seiya', 'Yamamoto', 24, 'seiya.yamamoto.574@my.csun.edu');
 
 --
 -- Indexes for dumped tables
@@ -145,7 +125,7 @@ ALTER TABLE `UserInfo`
 -- AUTO_INCREMENT for table `User`
 --
 ALTER TABLE `User`
-  MODIFY `UserID` int(16) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1721780079;
+  MODIFY `UserID` int(16) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1955898026;
 
 --
 -- Constraints for dumped tables
