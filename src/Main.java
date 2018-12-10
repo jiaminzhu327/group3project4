@@ -9,7 +9,7 @@ import java.io.IOException;
 public class Main extends Application {
 
     public void start(final Stage primaryStage) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("test_page.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("profile_page.fxml"));
         Scene scene = new Scene(root);
 
         primaryStage.setResizable(false);

@@ -66,15 +66,10 @@
                   </Button>
                   <ImageView fx:id="profile_image" fitHeight="170.0" fitWidth="200.0" layoutX="61.0" layoutY="39.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../image/blank-profile-picture-973461_960_720.png" />
+                        <Image url="@image/blank-profile-picture-973461_960_720.png" />
                      </image>
                   </ImageView>
                   <Button fx:id="image_button" layoutX="64.0" layoutY="239.0" mnemonicParsing="false" onAction="#editProfileImage" text="Edit Profile Image" />
-                  <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="1170.0" layoutY="189.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../image/QQ图片20161201223035.jpg" />
-                     </image>
-                  </ImageView>
                </children>
             </AnchorPane>
             <AnchorPane fx:id="udb_LowerAnchor" minHeight="0.0" minWidth="0.0" prefHeight="589.0" prefWidth="1132.0" scaleShape="false">

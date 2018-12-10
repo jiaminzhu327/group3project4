@@ -20,7 +20,10 @@ import javafx.stage.Window;
 
 import java.io.File;
 import java.io.IOException;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.sql.*;
+import java.util.ArrayList;
 
 
 public class ProfileController {
@@ -61,8 +64,11 @@ public class ProfileController {
     @FXML
     private Button image_button;
 
-//    @FXML
-//    private ImageView profile_image;
+    @FXML
+    private ImageView profile_image;
+
+    public String userName="";
+    private boolean firstShow=true;
 
 
     @FXML
@@ -113,6 +119,7 @@ public class ProfileController {
     private void editProfileImage() throws IOException{
         Stage stage = null;
         final File[] selectedFile = {null};
+//        final Image[] image = {null};
 
         image_button.setOnAction(new EventHandler<ActionEvent>() {
             @Override
@@ -121,9 +128,24 @@ public class ProfileController {
                 chooser.setTitle("Choose Image");
                 selectedFile[0] = chooser.showOpenDialog(stage);
                 System.out.println(selectedFile[0]);
+//                image[0] = new Image(selectedFile[0].toString());
+//                profile_image.setImage(image[0]);
+                try {
+                    URL url = selectedFile[0].toURI().toURL();
+
+                    /*
+                    Connect to DB and post this url into DB.
+                     */
+
+
+                    profile_image.setImage(new Image(url.toExternalForm()));
+                } catch (MalformedURLException e) {
+                    e.printStackTrace();
+                }
+
             }
         });
-//        profile_image = new ImageView(selectedFile[0].toString());
+
     }
 
     @FXML
@@ -168,6 +190,7 @@ public class ProfileController {
 
     public void showInfo(String userName){
         try {
+            System.out.println(firstShow);
             Class.forName("com.mysql.jdbc.Driver");
             Connection myConn = DriverManager.getConnection("jdbc:mysql://localhost:3306/COMP585?autoReconnect=true&useSSL=false", "root", "root");
             java.sql.Statement myStmt = myConn.createStatement();
@@ -192,6 +215,28 @@ public class ProfileController {
             String email = rs.getString("Email");
             System.out.println(email);
             udb_EmailLabel.textProperty().bind(Bindings.format("%s", "Email: " + email));
+            if(firstShow==true)
+            {
+                ArrayList<String> pastPosts=new ArrayList<String>();
+                ArrayList<Date> postsDate=new ArrayList<Date>();
+                sql="Select * from posts where UserID=(Select UserID from User where UserName = ?);";
+                st=myConn.prepareStatement(sql);
+                st.setString(1,userName);
+                ResultSet re=st.executeQuery();
+                while(re.next())
+                {
+                    pastPosts.add(re.getString("Post"));
+                    postsDate.add(re.getDate("Date_Posted"));
+                    System.out.println(re.getString("Post"));
+                    System.out.println(re.getDate("Date_Posted"));
+                }
+                for(int i=0;i<pastPosts.size();i++)
+                {
+                    udb_PostsListView.getItems().add(0, String.format("%1$-10s:", pastPosts.get(i)+" "+postsDate.get(i)));
+                    //    udb_PostsListView.getItems().add(0, String.format("%1$-10s:", pastPosts.get(i)));
+                }
+                firstShow=false;
+            }
         }catch(SQLException e){
             System.out.println("Connection Failed");
             System.out.println(e);
