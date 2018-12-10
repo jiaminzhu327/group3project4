@@ -17,31 +17,50 @@ import java.sql.*;
 import java.util.Random;
 
 public class SignupController {
-    
+    private String userName;
+    private String firstName;
+    private String lastName;
+    private int age;
+    private String email;
+    private String password;
+    private Boolean checkPass;
+    private static SignupDAOImpl sign;
+
+    public SignupController()
+    {
+        String userName;
+        String firstName;
+        String lastName;
+        int age;
+        String email;
+        String password;
+        Boolean checkPass;
+    }
+
     @FXML
     private TextField sign_up_firstName;
-    
+
     @FXML
     private TextField sign_up_lastName;
-    
+
     @FXML
     private TextField sign_up_age;
-    
+
     @FXML
     private TextField sign_up_email;
-    
+
     @FXML
     private TextField sign_up_username;
-    
+
     @FXML
     private PasswordField sign_up_password;
-    
+
     @FXML
     private PasswordField sign_up_confirmPassword;
-    
+
     @FXML
     private Button sign_up_registerButton;
-    
+
     @FXML
     private Button sign_up_cancelButton;
 
@@ -54,85 +73,74 @@ public class SignupController {
     @FXML
     private Label passwordDoesntMatch;
 
-    
+
     @FXML
     private void registerUser (ActionEvent event) throws Exception{
         //TODO Using DAO objects pass data to DB
         //TODO Let user know if account creation was successful
-
-        try{
-            Class.forName("com.mysql.jdbc.Driver");
-            //Change information into yours
-            Connection myConn = DriverManager.getConnection("jdbc:mysql://localhost:3306/COMP585?autoReconnect=true&useSSL=false", "root", "root");
-            System.out.println("Successfully connected");
-
-            //Create New User
-            String userName = sign_up_username.getText();
-            Date sqlNow = new Date(System.currentTimeMillis());
-            Random rnd = new Random();
-
-            //Check whether the Username is already used or not
-            int check = LoginController.CheckUser(userName);
-            if(check != 0){
-                System.out.println("This Username is already used.");
-                return;
-            }
-
-            //Set random number as UserID
-            int uID = rnd.nextInt();
-            if(uID < 0){
-                uID = Math.abs(uID);
-            }
-            String sql = "Insert into User (UserID, Username, Date_Created) values (?, ?, ?);";
-            PreparedStatement st = myConn.prepareStatement(sql);
-            st.setInt(1, uID);
-            st.setString(2, userName);
-            st.setDate(3, sqlNow);
-            st.executeUpdate();
-
-            //Register personal info
-            String firstName = sign_up_firstName.getText();
-            String lastName =sign_up_lastName.getText();
-            int age = Integer.parseInt(sign_up_age.getText());
-            String email = sign_up_email.getText();
-            sql = "Insert into UserInfo (UserID, FirstName, LastName, Age, Email) values (?, ?, ?, ?, ?);";
-            st = myConn.prepareStatement(sql);
-            st.setInt(1, uID);
-            st.setString(2, firstName);
-            st.setString(3, lastName);
-            st.setInt(4, age);
-            st.setString(5, email);
-            st.executeUpdate();
-
-            //Register authorization info
-            String password = sign_up_password.getText();
-            Boolean checkPass = matchPasswords();
-            if(checkPass) {
-                sql = "Insert into Authorization (UserID, Password, Date_Created) values (?, ?, ?);";
-                st = myConn.prepareStatement(sql);
-                st.setInt(1, uID);
-                st.setString(2, password);
-                st.setDate(3, sqlNow);
-                st.executeUpdate();
-                System.out.println("Successfully Registered");
-                //Returns back to login after account creation
-                Parent signUpPageParent = FXMLLoader.load(getClass().getResource("login_page.fxml"));
-                Scene signUpPageScene = new Scene(signUpPageParent);
-                Stage stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
-                //Rectangle2D screenBounds = Screen.getPrimary().getVisualBounds();
-                //stage.setX((screenBounds.getWidth() - 720) / 2);
-                //stage.setY((screenBounds.getHeight() - 720) / 2);
-                stage.setResizable(false);
-                stage.setScene(signUpPageScene);
-                stage.show();
-            }
-        }catch(Exception e){
-            System.out.println("Connection failed");
-            System.out.println(e);
+        //Create New User
+        userName = sign_up_username.getText();
+        //Check whether the Username is already used or not
+        int check = LoginController.CheckUser(userName);
+        if(check != 0){
+            System.out.println("This Username is already used.");
+            return;
+        }
+        //Register personal info
+        firstName = sign_up_firstName.getText();
+        lastName =sign_up_lastName.getText();
+        age = Integer.parseInt(sign_up_age.getText());
+        email = sign_up_email.getText();
+        //Register authorization info
+        password = sign_up_password.getText();
+        checkPass = matchPasswords();
+        sign=new SignupDAOImpl();
+        sign.addUsersInfo(this);
+        if(checkPass)
+        {
+            Parent signUpPageParent = FXMLLoader.load(getClass().getResource("login_page.fxml"));
+            Scene signUpPageScene = new Scene(signUpPageParent);
+            Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+            //Rectangle2D screenBounds = Screen.getPrimary().getVisualBounds();
+            //stage.setX((screenBounds.getWidth() - 720) / 2);
+            //stage.setY((screenBounds.getHeight() - 720) / 2);
+            stage.setResizable(false);
+            stage.setScene(signUpPageScene);
+            stage.show();
         }
 
     }
-    
+    public String getUserName()
+    {
+        return userName;
+    }
+    public String getFirstName()
+    {
+        return firstName;
+    }
+    public String getLastName()
+    {
+        return lastName;
+    }
+    public int getAge()
+    {
+        return age;
+    }
+    public String getEmail()
+    {
+        return email;
+    }
+    public String getPassword()
+    {
+        return password;
+    }
+    public boolean getCheckPass()
+    {
+        return checkPass;
+    }
+
+
+
     @FXML
     private void cancelRegistration (ActionEvent event) throws Exception{
 
