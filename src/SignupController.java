@@ -83,7 +83,7 @@ public class SignupController {
         //Check whether the Username is already used or not
         int check = LoginController.CheckUser(userName);
         if(check != 0){
-            System.out.println("This Username is already used.");
+            System.out.println("This Username exists.");
             return;
         }
         //Register personal info

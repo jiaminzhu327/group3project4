@@ -17,9 +17,12 @@ import javafx.stage.FileChooser;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
 import javafx.stage.Window;
+import javafx.embed.swing.SwingFXUtils;
 
-import java.io.File;
-import java.io.IOException;
+import java.io.*;
+import java.awt.image.BufferedImage;
+import javax.imageio.ImageIO;
+
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.sql.*;
@@ -132,15 +135,25 @@ public class ProfileController {
 //                profile_image.setImage(image[0]);
                 try {
                     URL url = selectedFile[0].toURI().toURL();
-
+                    FileInputStream fis = new FileInputStream(selectedFile[0]);
                     /*
                     Connect to DB and post this url into DB.
                      */
-
+                    Class.forName("com.mysql.jdbc.Driver");
+                    //Change information into yours
+                    Connection myConn = DriverManager.getConnection("jdbc:mysql://localhost:3306/COMP585?autoReconnect=true&useSSL=false", "root", "root");
+                    System.out.println("Successfully connected");
+                    String sql = "Update UserInfo set Picture = ? where UserID = ?;";
+                    PreparedStatement st = myConn.prepareStatement(sql);
+                    st.setBinaryStream(1, fis, (int) selectedFile[0].length());
+                    st.setInt(2, LoginController.currentUserID);
+                    st.executeUpdate();
 
                     profile_image.setImage(new Image(url.toExternalForm()));
                 } catch (MalformedURLException e) {
                     e.printStackTrace();
+                } catch(Exception e){
+                    System.out.println(e);
                 }
 
             }
@@ -215,6 +228,11 @@ public class ProfileController {
             String email = rs.getString("Email");
             System.out.println(email);
             udb_EmailLabel.textProperty().bind(Bindings.format("%s", "Email: " + email));
+            Blob blob = rs.getBlob("Picture");
+            byte[] b = blob.getBytes(1, (int)blob.length());
+            BufferedImage img = ImageIO.read(new ByteArrayInputStream(b));
+            Image imgFX = SwingFXUtils.toFXImage(img, null);
+            profile_image.setImage(imgFX);
             if(firstShow==true)
             {
                 ArrayList<String> pastPosts=new ArrayList<String>();
@@ -245,6 +263,8 @@ public class ProfileController {
             System.out.println(e);
         }catch(NullPointerException e){
             System.out.println("Null Pointer");
+            System.out.println(e);
+        }catch(Exception e){
             System.out.println(e);
         }
 
