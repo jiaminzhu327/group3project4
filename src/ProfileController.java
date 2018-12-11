@@ -220,6 +220,20 @@ public class ProfileController {
             @Override
             public void handle(ActionEvent event) {
                 status_label.textProperty().bind(Bindings.format("%s",status_textfield.getText()));
+                String status=status_textfield.getText();
+                try {
+                    Class.forName("com.mysql.jdbc.Driver");
+                    Connection myConn=DriverManager.getConnection("jdbc:mysql://localhost:3306/COMP585?autoReconnect=true&useSSL=false", "root", "root");
+                    String sql="Update UserInfo set status=? where UserID=?";
+                    PreparedStatement st = myConn.prepareStatement(sql);
+                    st.setString(1,status);
+                    st.setInt(2, LoginController.currentUserID);
+                    st.executeUpdate();
+                }
+                catch(Exception e) {
+                    System.out.println("status store fail");
+                    System.out.println(e);
+                }
             }
         });
     }
@@ -309,6 +323,12 @@ public class ProfileController {
             System.out.println(age);
             udb_AgeLabel.textProperty().bind(Bindings.format("%s", age));
 
+            if(rs.getString("status")!=null) {
+                String status=rs.getString("status");
+                System.out.println("current status "+status);
+                status_label.textProperty().bind(Bindings.format("%s",status));
+            }
+
             hideAge_button.selectedProperty().addListener(new ChangeListener<Boolean>() {
                 @Override
                 public void changed(ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) {
@@ -347,10 +367,12 @@ public class ProfileController {
 
 
             Blob blob = rs.getBlob("Picture");
-            byte[] b = blob.getBytes(1, (int)blob.length());
-            BufferedImage img = ImageIO.read(new ByteArrayInputStream(b));
-            Image imgFX = SwingFXUtils.toFXImage(img, null);
-            profile_image.setImage(imgFX);
+            if(blob != null) {
+                byte[] b = blob.getBytes(1, (int) blob.length());
+                BufferedImage img = ImageIO.read(new ByteArrayInputStream(b));
+                Image imgFX = SwingFXUtils.toFXImage(img, null);
+                profile_image.setImage(imgFX);
+            }
 
             if(firstShow==true)
             {
@@ -375,12 +397,32 @@ public class ProfileController {
                 firstShow=false;
             }
 
+
+            ArrayList<String> friendUserName = new ArrayList<String>();
+            //rrayList<int> friendUserID = new ArrayList<int>();
+            sql = "Select * from User where UserID In (Select FriendID from Friends where UserID = ?);";
+            st = myConn.prepareStatement(sql);
+            st.setInt(1, LoginController.currentUserID);
+            rs = st.executeQuery();
+            while(rs.next()){
+                friendUserName.add(rs.getString("Username"));
+                System.out.println("Output:" + rs.getString("Username"));
+                //friendUserID.add(rs.getInt("UserID"));
+            }
+            for(int i = 0; i < friendUserName.size(); i++){
+                udb_FriendsListView.getItems().add(0, friendUserName.get(i));
+                System.out.println("Show:" + friendUserName.get(i));
+            }
+
+
             hideFriend_button.selectedProperty().addListener(new ChangeListener<Boolean>() {
                 @Override
                 public void changed(ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) {
                     udb_FriendsListView.setVisible(!newValue);
                 }
             });
+
+            myConn.close();
 
         }catch(SQLException e){
             System.out.println("Connection Failed");

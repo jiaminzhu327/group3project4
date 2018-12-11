@@ -14,32 +14,32 @@
                   <Font size="56.0" />
                </font>
             </Label>
-            <TextField fx:id="sign_up_firstName" layoutX="266.0" layoutY="188.0" prefHeight="45.0" prefWidth="470.0" promptText="First Name">
+            <TextField fx:id="sign_up_firstName" layoutX="373.0" layoutY="188.0" prefHeight="45.0" prefWidth="470.0" promptText="First Name">
                <font>
                   <Font size="20.0" />
                </font></TextField>
-            <TextField fx:id="sign_up_lastName" layoutX="265.0" layoutY="266.0" prefHeight="45.0" prefWidth="470.0" promptText="Last Name">
+            <TextField fx:id="sign_up_lastName" layoutX="373.0" layoutY="266.0" prefHeight="45.0" prefWidth="470.0" promptText="Last Name">
                <font>
                   <Font size="20.0" />
                </font></TextField>
-            <TextField fx:id="sign_up_email" layoutX="265.0" layoutY="424.0" prefHeight="45.0" prefWidth="470.0" promptText="Email">
-               <font>
-                  <Font size="20.0" />
-               </font></TextField>
-            <TextField fx:id="sign_up_username" layoutX="265.0" layoutY="507.0" onMouseExited="#checkUsername" prefHeight="45.0" prefWidth="470.0" promptText="Username">
-               <font>
-                  <Font size="20.0" />
-               </font></TextField>
-            <TextField fx:id="sign_up_age" layoutX="265.0" layoutY="344.0" prefHeight="45.0" prefWidth="470.0" promptText="Age">
+            <TextField fx:id="sign_up_age" layoutX="373.0" layoutY="344.0" prefHeight="45.0" prefWidth="470.0" promptText="Age">
                <font>
                   <Font size="20.0" />
                </font>
             </TextField>
-            <PasswordField fx:id="sign_up_password" layoutX="266.0" layoutY="590.0" prefHeight="45.0" prefWidth="470.0" promptText="Password">
+            <TextField fx:id="sign_up_email" layoutX="373.0" layoutY="423.0" prefHeight="45.0" prefWidth="470.0" promptText="Email">
+               <font>
+                  <Font size="20.0" />
+               </font></TextField>
+            <TextField fx:id="sign_up_username" layoutX="373.0" layoutY="508.0" onMouseExited="#checkUsername" prefHeight="45.0" prefWidth="470.0" promptText="Username">
+               <font>
+                  <Font size="20.0" />
+               </font></TextField>
+            <PasswordField fx:id="sign_up_password" layoutX="373.0" layoutY="590.0" prefHeight="45.0" prefWidth="470.0" promptText="Password">
                <font>
                   <Font size="20.0" />
                </font></PasswordField>
-            <PasswordField fx:id="sign_up_confirmPassword" layoutX="266.0" layoutY="670.0" onKeyReleased="#matchPasswords" prefHeight="45.0" prefWidth="470.0" promptText="Confirm Password">
+            <PasswordField fx:id="sign_up_confirmPassword" layoutX="373.0" layoutY="671.0" onKeyReleased="#matchPasswords" prefHeight="45.0" prefWidth="470.0" promptText="Confirm Password">
                <font>
                   <Font size="20.0" />
                </font></PasswordField>
@@ -59,13 +59,45 @@
                <font>
                   <Font size="22.0" />
                </font></Label>
-            <Label fx:id="passwordDoesntMatch" layoutX="750.0" layoutY="677.0" text="Password doesn't match" textFill="RED" visible="false">
-               <font>
-                  <Font size="22.0" />
-               </font></Label>
+            <Label fx:id="passwordDoesntMatch" layoutX="375.0" layoutY="732.0" prefHeight="48.0" prefWidth="412.0" text="Password doesn't match" textFill="RED" visible="false" />
             <Label layoutX="381.0" layoutY="123.0" text="*Please fill all the following fileds*" textFill="RED">
                <font>
                   <Font size="16.0" />
+               </font>
+            </Label>
+            <Label layoutX="149.0" layoutY="196.0" text="Enter Your Firstname:">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
+            <Label layoutX="150.0" layoutY="274.0" text="Enter Your Lastname:">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
+            <Label layoutX="198.0" layoutY="352.0" text="Enter Your Age:">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
+            <Label layoutX="186.0" layoutY="431.0" text="Enter Your Email:">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
+            <Label layoutX="145.0" layoutY="515.0" text="Enter Your Username:">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
+            <Label layoutX="151.0" layoutY="598.0" text="Enter Your Password:">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
+            <Label layoutX="121.0" layoutY="678.0" text="Re-Enter Your Password:">
+               <font>
+                  <Font size="20.0" />
                </font>
             </Label>
          </children>
