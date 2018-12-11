@@ -235,12 +235,14 @@ public class ProfileController {
 
     @FXML
     private void removePost(){
-        udb_PostsListView.getItems().clear();
+        final int selectedIdx = udb_PostsListView.getSelectionModel().getSelectedIndex();
+        udb_PostsListView.getItems().remove(selectedIdx);
     }
 
     @FXML
     private void removeFriend(){
-        udb_FriendsListView.getItems().clear();
+        final int selectedIdx = udb_FriendsListView.getSelectionModel().getSelectedIndex();
+        udb_FriendsListView.getItems().remove(selectedIdx);
     }
 
     public void showInfo(String userName){
