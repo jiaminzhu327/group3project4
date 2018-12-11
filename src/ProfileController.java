@@ -95,7 +95,7 @@ public class ProfileController {
     private CheckBox hideStatus_button;
 
     @FXML
-    private CheckBox hidePosts_button;
+    private CheckBox hidePost_button;
 
     @FXML
     private CheckBox hideFriend_button;
@@ -285,6 +285,24 @@ public class ProfileController {
                 }
             });
 
+            hidePost_button.selectedProperty().addListener(new ChangeListener<Boolean>() {
+                @Override
+                public void changed(ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) {
+                    udb_PostsListView.setVisible(!newValue);
+                    //System.out.println("reach here...asdjhaskjdhakjshd");
+                }
+            });
+
+            hideFriend_button.selectedProperty().addListener(new ChangeListener<Boolean>() {
+                @Override
+                public void changed(ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) {
+                    udb_FriendsListView.setVisible(!newValue);
+                }
+            });
+
+
+
+
             String email = rs.getString("Email");
             System.out.println(email);
             udb_EmailLabel.textProperty().bind(Bindings.format("%s", email));
@@ -319,13 +337,6 @@ public class ProfileController {
                 firstShow=false;
             }
 
-            hidePosts_button.selectedProperty().addListener(new ChangeListener<Boolean>() {
-                @Override
-                public void changed(ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) {
-                    udb_PostsListView.setVisible(!newValue);
-                }
-            });
-
             hideFriend_button.selectedProperty().addListener(new ChangeListener<Boolean>() {
                 @Override
                 public void changed(ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) {
@@ -345,7 +356,7 @@ public class ProfileController {
         }catch(Exception e){
             System.out.println(e);
         }
-
     }
+
 
 }

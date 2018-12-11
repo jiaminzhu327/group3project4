@@ -73,16 +73,6 @@
                         <Font size="24.0" />
                      </font>
                   </CheckBox>
-                  <CheckBox fx:id="hidePosts_button" layoutX="1106.0" layoutY="225.0" mnemonicParsing="false" text="Hide Posts">
-                     <font>
-                        <Font size="24.0" />
-                     </font>
-                  </CheckBox>
-                  <CheckBox fx:id="hideFriend_button" layoutX="1106.0" layoutY="300.0" mnemonicParsing="false" text="Hide Friend List">
-                     <font>
-                        <Font size="24.0" />
-                     </font>
-                  </CheckBox>
                   <Label layoutX="287.0" layoutY="132.0" text="Age: ">
                      <font>
                         <Font size="25.0" />
@@ -119,6 +109,16 @@
                         <Font size="22.0" />
                      </font>
                   </Button>
+                  <CheckBox fx:id="hidePost_button" layoutX="1106.0" layoutY="225.0" mnemonicParsing="false" text="Hide Posts">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                  </CheckBox>
+                  <CheckBox fx:id="hideFriend_button" layoutX="1106.0" layoutY="300.0" mnemonicParsing="false" text="Hide Friends List">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                  </CheckBox>
                </children>
             </AnchorPane>
             <AnchorPane fx:id="udb_LowerAnchor" minHeight="0.0" minWidth="0.0" prefHeight="589.0" prefWidth="1132.0" scaleShape="false">
