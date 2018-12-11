@@ -119,6 +119,7 @@
                         <Font size="24.0" />
                      </font>
                   </CheckBox>
+                  <Button fx:id="friendprofile_test_button" layoutX="1442.0" layoutY="357.0" mnemonicParsing="false" onAction="#openfriendprofileTest" text="Friend Profile Test" />
                </children>
             </AnchorPane>
             <AnchorPane fx:id="udb_LowerAnchor" minHeight="0.0" minWidth="0.0" prefHeight="589.0" prefWidth="1132.0" scaleShape="false">

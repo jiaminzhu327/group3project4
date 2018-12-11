@@ -103,6 +103,9 @@ public class ProfileController {
     @FXML
     private ScrollPane udb_FLScrollPane;
 
+    @FXML
+    private Button friendprofile_test_button;
+
 
     public String userName="";
     private boolean firstShow=true;
@@ -141,6 +144,18 @@ public class ProfileController {
         stage.setX((screenBounds.getWidth() - 600) / 2);
         stage.setY((screenBounds.getHeight() - 400) / 2);
 
+        stage.setResizable(false);
+        stage.setScene(signUpPageScene);
+        stage.show();
+    }
+
+    @FXML
+    private void openfriendprofileTest() throws IOException{
+        Parent signUpPageParent = FXMLLoader.load(getClass().getResource("friendprofile_page.fxml"));
+        Scene signUpPageScene = new Scene(signUpPageParent);
+        Stage stage = new Stage();
+
+        stage.setResizable(false);
         stage.setResizable(false);
         stage.setScene(signUpPageScene);
         stage.show();
@@ -236,7 +251,30 @@ public class ProfileController {
     @FXML
     private void removePost(){
         final int selectedIdx = udb_PostsListView.getSelectionModel().getSelectedIndex();
+        try
+        {
+            Class.forName("com.mysql.jdbc.Driver");
+            Connection myConn=DriverManager.getConnection("jdbc:mysql://localhost:3306/COMP585?autoReconnect=true&useSSL=false", "root", "root");
+            String sql="delete from posts where UserID = (Select UserID from User where UserName = ?) and Post=?;";
+            PreparedStatement st=myConn.prepareStatement(sql);
+            st.setString(1,LoginController.userName);
+            System.out.println("Selected post "+ udb_PostsListView.getItems().get(selectedIdx));
+            System.out.println("User "+LoginController.userName);
+            String needRemovePost=(String) udb_PostsListView.getItems().get(selectedIdx);
+            needRemovePost=needRemovePost.replaceAll("[^a-z^A-Z]","");
+            System.out.println("Post is "+needRemovePost);
+            st.setString(2,needRemovePost);
+
+
+            st.execute();
+        }
+        catch(Exception e)
+        {
+            System.out.println("Connection Failed");
+            System.out.println(e);
+        }
         udb_PostsListView.getItems().remove(selectedIdx);
+
     }
 
     @FXML

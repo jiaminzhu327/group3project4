@@ -10,7 +10,7 @@
    <children>
       <Label layoutX="42.0" layoutY="14.0" text="Enter the username of your friend you want to add:" />
       <TextField fx:id="userName" layoutX="124.0" layoutY="47.0" prefHeight="39.0" prefWidth="353.0" />
-      <Button fx:id="addfriend_button" layoutX="149.0" layoutY="132.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="96.0" text="Add" />
+      <Button fx:id="addfriend_button" layoutX="149.0" layoutY="132.0" mnemonicParsing="false" onAction="#addFriend" prefHeight="39.0" prefWidth="96.0" text="Add" />
       <Button fx:id="close_button" layoutX="352.0" layoutY="132.0" mnemonicParsing="false" onAction="#handleCloseButtonAction" prefHeight="39.0" prefWidth="96.0" text="Close" />
       <Label fx:id="notFound_label" layoutX="134.0" layoutY="94.0" text="*The username you typed does not exist!*" textFill="RED" visible="false" />
       <Label fx:id="found_label" layoutX="167.0" layoutY="94.0" text="Your friend is added to friend list!" textFill="RED" visible="false" />
