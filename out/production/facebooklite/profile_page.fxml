@@ -6,60 +6,53 @@
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1080.0" prefWidth="1920.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ProfileController">
+<Pane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ProfileController">
    <children>
       <SplitPane dividerPositions="0.4489795918367347" orientation="VERTICAL" prefHeight="1080.0" prefWidth="1920.0" scaleShape="false">
          <items>
             <AnchorPane fx:id="userDashBoard_MainAnchor" minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0" scaleShape="false">
                <children>
 
-                  <Button fx:id="udb_logoutButton" layoutX="1636.0" layoutY="234.0" mnemonicParsing="false" onAction="#logoutOfApplication" prefHeight="48.0" prefWidth="168.0" text="Logout">
+                  <Button fx:id="udb_logoutButton" layoutX="1495.0" layoutY="67.0" mnemonicParsing="false" onAction="#logoutOfApplication" prefHeight="48.0" prefWidth="168.0" text="Logout" textFill="RED">
                      <font>
                         <Font size="24.0" />
                      </font></Button>
-                  <Button fx:id="udb_settingsButton" layoutX="1635.0" layoutY="176.0" mnemonicParsing="false" onAction="#openSettings" prefHeight="48.0" prefWidth="168.0" text="Settings">
-                     <font>
-                        <Font size="22.0" />
-                     </font></Button>
-                  <Label fx:id="udb_firstNameLabel" layoutX="286.0" layoutY="39.0" text="First Name">
+                  <Label fx:id="udb_firstNameLabel" layoutX="413.0" layoutY="39.0" text="First Name">
                      <font>
                         <Font size="25.0" />
                      </font>
                   </Label>
-                  <Label fx:id="udb_lastNameLabel" layoutX="287.0" layoutY="88.0" text="Last Name">
+                  <Label fx:id="udb_lastNameLabel" layoutX="407.0" layoutY="88.0" text="Last Name">
                      <font>
                         <Font size="25.0" />
                      </font>
                   </Label>
-                  <Label fx:id="udb_AgeLabel" layoutX="286.0" layoutY="146.0" text="Age">
+                  <Label fx:id="udb_AgeLabel" layoutX="347.0" layoutY="132.0" text="Age">
                      <font>
                         <Font size="25.0" />
                      </font>
                   </Label>
-                  <Label fx:id="udb_EmailLabel" layoutX="287.0" layoutY="182.0" text="Email">
+                  <Label fx:id="udb_EmailLabel" layoutX="361.0" layoutY="173.0" text="Email">
                      <font>
                         <Font size="25.0" />
                      </font>
                   </Label>
-                  <Label layoutX="287.0" layoutY="222.0" text="Status:">
+                  <Label fx:id="status_label" layoutX="373.0" layoutY="215.0" text="No Status yet">
                      <font>
                         <Font size="25.0" />
                      </font>
                   </Label>
-                  <TextArea fx:id="udb_statusArea" editable="true" layoutX="287.0" layoutY="264.0" prefHeight="51.0" prefWidth="466.0">
+                  <TextArea fx:id="udb_statusArea" editable="true" layoutX="211.0" layoutY="410.0" prefHeight="51.0" prefWidth="466.0">
                      <font>
                         <Font size="25.0" />
                      </font></TextArea>
-                  <Button fx:id="udb_editStatusButton" layoutX="281.0" layoutY="325.0" mnemonicParsing="false" onAction="#editStatus" text="Add Status">
-                     <font>
-                        <Font size="22.0" />
-                     </font></Button>
-                  <Button fx:id="udb_NewPostButton" layoutX="551.0" layoutY="410.0" mnemonicParsing="false" onAction="#addPost" prefHeight="45.0" prefWidth="203.0" text="Add Post">
+                  <Button fx:id="udb_editStatusButton" layoutX="477.0" layoutY="259.0" mnemonicParsing="false" onAction="#addStatus" prefHeight="39.0" prefWidth="111.0" text="Add Status" />
+                  <Button fx:id="udb_NewPostButton" layoutX="731.0" layoutY="412.0" mnemonicParsing="false" onAction="#addPost" prefHeight="45.0" prefWidth="203.0" text="Add Post">
                      <font>
                         <Font size="22.0" />
                      </font>
                   </Button>
-                  <Button fx:id="addFriend_button" layoutX="1547.0" layoutY="408.0" mnemonicParsing="false" onAction="#openAddFriend" prefHeight="55.0" prefWidth="164.0" text="Add Friend">
+                  <Button fx:id="addFriend_button" layoutX="1442.0" layoutY="409.0" mnemonicParsing="false" onAction="#openAddFriend" prefHeight="55.0" prefWidth="164.0" text="Add Friend">
                      <font>
                         <Font size="22.0" />
                      </font>
@@ -70,6 +63,62 @@
                      </image>
                   </ImageView>
                   <Button fx:id="image_button" layoutX="64.0" layoutY="239.0" mnemonicParsing="false" onAction="#editProfileImage" text="Edit Profile Image" />
+                  <CheckBox fx:id="hideAge_button" layoutX="1106.0" layoutY="75.0" mnemonicParsing="false" text="Hide Age">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                  </CheckBox>
+                  <CheckBox fx:id="hideStatus_button" layoutX="1106.0" layoutY="150.0" mnemonicParsing="false" text="Hide Status">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                  </CheckBox>
+                  <CheckBox fx:id="hidePosts_button" layoutX="1106.0" layoutY="225.0" mnemonicParsing="false" text="Hide Posts">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                  </CheckBox>
+                  <CheckBox fx:id="hideFriend_button" layoutX="1106.0" layoutY="300.0" mnemonicParsing="false" text="Hide Friend List">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                  </CheckBox>
+                  <Label layoutX="287.0" layoutY="132.0" text="Age: ">
+                     <font>
+                        <Font size="25.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="287.0" layoutY="39.0" text="Firstname: ">
+                     <font>
+                        <Font size="25.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="286.0" layoutY="88.0" text="Lastname:">
+                     <font>
+                        <Font size="25.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="286.0" layoutY="173.0" text="Email:">
+                     <font>
+                        <Font size="25.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="status_staticlabel" layoutX="287.0" layoutY="215.0" text="Status:">
+                     <font>
+                        <Font size="25.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="status_textfield" layoutX="286.0" layoutY="259.0" prefHeight="39.0" prefWidth="180.0" />
+                  <Button fx:id="removePost_button" layoutX="949.0" layoutY="412.0" mnemonicParsing="false" onAction="#removePost" text="Remove Post" textFill="RED">
+                     <font>
+                        <Font size="22.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="removeFriend_button" layoutX="1640.0" layoutY="410.0" mnemonicParsing="false" onAction="#removeFriend" prefHeight="51.0" prefWidth="180.0" text="Remove Friend" textFill="RED">
+                     <font>
+                        <Font size="22.0" />
+                     </font>
+                  </Button>
                </children>
             </AnchorPane>
             <AnchorPane fx:id="udb_LowerAnchor" minHeight="0.0" minWidth="0.0" prefHeight="589.0" prefWidth="1132.0" scaleShape="false">

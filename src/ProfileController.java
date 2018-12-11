@@ -1,4 +1,6 @@
 import javafx.beans.binding.Bindings;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -7,18 +9,22 @@ import javafx.geometry.Rectangle2D;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.*;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.control.ListView;
+import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextArea;
+import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.AnchorPane;
 import javafx.stage.FileChooser;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
 import javafx.stage.Window;
 import javafx.embed.swing.SwingFXUtils;
 
+import java.awt.*;
 import java.io.*;
 import java.awt.image.BufferedImage;
 import javax.imageio.ImageIO;
@@ -70,8 +76,41 @@ public class ProfileController {
     @FXML
     private ImageView profile_image;
 
+    @FXML
+    private Label status_label;
+
+    @FXML
+    private TextField status_textfield;
+
+    @FXML
+    private Button removeFriend_button;
+
+    @FXML
+    private Button removePost_button;
+
+    @FXML
+    private CheckBox hideAge_button;
+
+    @FXML
+    private CheckBox hideStatus_button;
+
+    @FXML
+    private CheckBox hidePosts_button;
+
+    @FXML
+    private CheckBox hideFriend_button;
+
+    @FXML
+    private ScrollPane udb_FLScrollPane;
+
+
     public String userName="";
     private boolean firstShow=true;
+
+    public void initialize(){
+
+        showInfo(LoginController.userName);
+    }
 
 
     @FXML
@@ -148,7 +187,6 @@ public class ProfileController {
                     st.setBinaryStream(1, fis, (int) selectedFile[0].length());
                     st.setInt(2, LoginController.currentUserID);
                     st.executeUpdate();
-
                     profile_image.setImage(new Image(url.toExternalForm()));
                 } catch (MalformedURLException e) {
                     e.printStackTrace();
@@ -162,28 +200,22 @@ public class ProfileController {
     }
 
     @FXML
-    private void editStatus(){
-        if(!udb_statusArea.isEditable()){ // Editable is false
-            udb_statusArea.setEditable(true);
-            udb_editStatusButton.setText("Save Status");
-            udb_editStatusButton.setLayoutX(1381);
-            udb_editStatusButton.setLayoutY(26);
-        }else { // Editable is true
-            udb_statusArea.setEditable(false);
-            udb_editStatusButton.setText("Edit Status");
-            udb_editStatusButton.setLayoutX(1389);
-            udb_editStatusButton.setLayoutY(26);
-        }
+    private void addStatus(){
+        udb_editStatusButton.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                status_label.textProperty().bind(Bindings.format("%s",status_textfield.getText()));
+            }
+        });
     }
 
     @FXML
     private void addPost(){
-        showInfo(LoginController.userName);
         if(udb_statusArea.getText().length() < 1){
             return;
         }
-        Date sqlNow = new Date(System.currentTimeMillis());
-        udb_PostsListView.getItems().add(0, String.format("%1$-10s:", udb_statusArea.getText() + "\t" + sqlNow + " " + sqlNow.getTime()));
+        Timestamp timestamp = new Timestamp(System.currentTimeMillis());
+        udb_PostsListView.getItems().add(0, String.format("%1$-10s:", udb_statusArea.getText() + "\t" + timestamp));
         try {
             Class.forName("com.mysql.jdbc.Driver");
             //Change information into yours
@@ -193,12 +225,22 @@ public class ProfileController {
             PreparedStatement st = myConn.prepareStatement(sql);
             st.setInt(1, LoginController.currentUserID);
             st.setString(2, udb_statusArea.getText());
-            st.setDate(3, sqlNow);
+            st.setTimestamp(3, timestamp);
             st.executeUpdate();
         }catch(Exception e){
             System.out.println("Connection Failed");
             System.out.println(e);
         }
+    }
+
+    @FXML
+    private void removePost(){
+        udb_PostsListView.getItems().clear();
+    }
+
+    @FXML
+    private void removeFriend(){
+        udb_FriendsListView.getItems().clear();
     }
 
     public void showInfo(String userName){
@@ -218,25 +260,44 @@ public class ProfileController {
             String firstName = rs.getString("FirstName");
             System.out.println(firstName);
             System.out.println(udb_firstNameLabel);
-            udb_firstNameLabel.textProperty().bind(Bindings.format("%s", "FirstName: " + firstName));
+            udb_firstNameLabel.textProperty().bind(Bindings.format("%s", firstName));
+
             String lastName = rs.getString("LastName");
             System.out.println(lastName);
-            udb_lastNameLabel.textProperty().bind(Bindings.format("%s", "LastName: " + lastName));
+            udb_lastNameLabel.textProperty().bind(Bindings.format("%s", lastName));
             String age = rs.getString("Age");
             System.out.println(age);
-            udb_AgeLabel.textProperty().bind(Bindings.format("%s", "Age: " + age));
+            udb_AgeLabel.textProperty().bind(Bindings.format("%s", age));
+
+            hideAge_button.selectedProperty().addListener(new ChangeListener<Boolean>() {
+                @Override
+                public void changed(ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) {
+                    udb_AgeLabel.setVisible(!newValue);
+                }
+            });
+
+            hideStatus_button.selectedProperty().addListener(new ChangeListener<Boolean>() {
+                @Override
+                public void changed(ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) {
+                    status_label.setVisible(!newValue);
+                }
+            });
+
             String email = rs.getString("Email");
             System.out.println(email);
-            udb_EmailLabel.textProperty().bind(Bindings.format("%s", "Email: " + email));
+            udb_EmailLabel.textProperty().bind(Bindings.format("%s", email));
+
+
             Blob blob = rs.getBlob("Picture");
             byte[] b = blob.getBytes(1, (int)blob.length());
             BufferedImage img = ImageIO.read(new ByteArrayInputStream(b));
             Image imgFX = SwingFXUtils.toFXImage(img, null);
             profile_image.setImage(imgFX);
+
             if(firstShow==true)
             {
                 ArrayList<String> pastPosts=new ArrayList<String>();
-                ArrayList<Date> postsDate=new ArrayList<Date>();
+                ArrayList<Timestamp> postsDate=new ArrayList<Timestamp>();
                 sql="Select * from posts where UserID=(Select UserID from User where UserName = ?);";
                 st=myConn.prepareStatement(sql);
                 st.setString(1,userName);
@@ -244,7 +305,7 @@ public class ProfileController {
                 while(re.next())
                 {
                     pastPosts.add(re.getString("Post"));
-                    postsDate.add(re.getDate("Date_Posted"));
+                    postsDate.add(re.getTimestamp("Date_Posted"));
                     System.out.println(re.getString("Post"));
                     System.out.println(re.getDate("Date_Posted"));
                 }
@@ -255,6 +316,21 @@ public class ProfileController {
                 }
                 firstShow=false;
             }
+
+            hidePosts_button.selectedProperty().addListener(new ChangeListener<Boolean>() {
+                @Override
+                public void changed(ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) {
+                    udb_PostsListView.setVisible(!newValue);
+                }
+            });
+
+            hideFriend_button.selectedProperty().addListener(new ChangeListener<Boolean>() {
+                @Override
+                public void changed(ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) {
+                    udb_FriendsListView.setVisible(!newValue);
+                }
+            });
+
         }catch(SQLException e){
             System.out.println("Connection Failed");
             System.out.println(e);

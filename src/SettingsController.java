@@ -18,26 +18,19 @@ public class SettingsController {
     private CheckBox settings_postsCB;
 
     @FXML
-    private Button settings_defaultSettings;
-
-    @FXML
     private Button settings_applySettings;
 
-    @FXML
-    private void applyDefaultSettings(){
-
-        settings_AgeCB.setSelected(false);
-        settings_emailCB.setSelected(false);
-        settings_friendsListCB.setSelected(false);
-        settings_postsCB.setSelected(false);
-    }
 
     @FXML
     private void applyUserSettings(){
-
-        //Closes settings window after values are stored
         Stage stage = (Stage)settings_applySettings.getScene().getWindow();
         stage.close();
+    }
+
+
+    public boolean ageBoxSelected()
+    {
+        return settings_AgeCB.isSelected();
     }
 
 }
