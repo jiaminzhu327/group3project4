@@ -109,6 +109,11 @@
                         <Font size="22.0" />
                      </font>
                   </Button>
+                  <Button fx:id="reload_button" layoutX="1442.0" layoutY="300.0" mnemonicParsing="false" onAction="#showInfo" prefHeight="51.0" prefWidth="180.0" text="Reload List" textFill="RED">
+                     <font>
+                        <Font size="22.0" />
+                     </font>
+                  </Button>
                   <CheckBox fx:id="hidePost_button" layoutX="1106.0" layoutY="225.0" mnemonicParsing="false" text="Hide Posts">
                      <font>
                         <Font size="24.0" />
