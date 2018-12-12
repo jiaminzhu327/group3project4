@@ -33,6 +33,7 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.sql.*;
 import java.util.ArrayList;
+import java.util.List;
 
 
 public class ProfileController {
@@ -109,11 +110,36 @@ public class ProfileController {
 
     public String userName="";
     private boolean firstShow=true;
+    private User selectedFriend;
+    private List<User> hiddenFriends;
 
     public void initialize(){
 
         showInfo(LoginController.userName);
+        udb_FriendsListView.setOnMouseClicked(e -> {
+            selectedFriend = (User) udb_FriendsListView.getSelectionModel().getSelectedItem();
+            if (e.getClickCount() == 2) {
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("FriendDetail.fxml"));
+                FriendDetailController detailController = new FriendDetailController();
+                loader.setController(detailController);
+                Parent signUpPageParent = null;
+                try {
+                    signUpPageParent = loader.load();
+                    detailController.setSelectedFriend(selectedFriend);
+                } catch (IOException ex) {
+                    System.err.println(ex.getMessage());
+                }
+                Scene signUpPageScene = new Scene(signUpPageParent);
+                Stage stage = new Stage();
+
+                stage.setResizable(false);
+                stage.setScene(signUpPageScene);
+                stage.show();
+            }
+        });
+
     }
+
 
 
     @FXML
@@ -290,6 +316,38 @@ public class ProfileController {
         udb_PostsListView.getItems().remove(selectedIdx);
 
     }
+    public void AddUserToFriendList(User user) {
+
+        try {
+            Class.forName("com.mysql.jdbc.Driver");
+            Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/COMP585?autoReconnect=true&useSSL=false", "root", "root");
+            PreparedStatement ps = connection.prepareStatement("INSERT INTO friends VALUE(?, ?)");
+            ps.setInt(1, LoginController.currentUserID);
+            ps.setInt(2, user.getId());
+            ps.executeUpdate();
+            udb_FriendsListView.getItems().add(user);
+        } catch (SQLException | ClassNotFoundException e) {
+            System.err.println(e.getMessage());
+        }
+    }
+    public void getFriendListForCurrentUser() {
+        try {
+            Class.forName("com.mysql.jdbc.Driver");
+            Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/COMP585?autoReconnect=true&useSSL=false", "root", "root");
+            PreparedStatement ps = connection.prepareStatement("SELECT * FROM userinfo WHERE UserId IN (SELECT FriendID FROM friends WHERE UserId = ?)");
+            ps.setInt(1, LoginController.currentUserID);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                User user = new User(rs.getString("FirstName"), rs.getString("LastName"), rs.getInt("Age"));
+                user.setId(rs.getInt("UserId"));
+                user.setEmail(rs.getString("Email"));
+                udb_FriendsListView.getItems().add(user);
+            }
+
+        } catch (SQLException | ClassNotFoundException e) {
+            System.err.println(e.getMessage());
+        }
+    }
 
     @FXML
     private void removeFriend(){
@@ -323,11 +381,48 @@ public class ProfileController {
             System.out.println(age);
             udb_AgeLabel.textProperty().bind(Bindings.format("%s", age));
 
+            if(firstShow==true)
+            {
+                ArrayList<String> pastPosts=new ArrayList<String>();
+                ArrayList<Timestamp> postsDate=new ArrayList<Timestamp>();
+                sql="Select * from posts where UserID=(Select UserID from User where UserName = ?);";
+                st=myConn.prepareStatement(sql);
+                st.setString(1,userName);
+                ResultSet re=st.executeQuery();
+                while(re.next())
+                {
+                    pastPosts.add(re.getString("Post"));
+                    postsDate.add(re.getTimestamp("Date_Posted"));
+                    System.out.println(re.getString("Post"));
+                    System.out.println(re.getDate("Date_Posted"));
+                }
+                for(int i=0;i<pastPosts.size();i++)
+                {
+                    udb_PostsListView.getItems().add(0, String.format("%1$-10s:", pastPosts.get(i)+" "+postsDate.get(i)));
+                    //    udb_PostsListView.getItems().add(0, String.format("%1$-10s:", pastPosts.get(i)));
+                }
+                firstShow=false;
+            }
+
             if(rs.getString("status")!=null) {
                 String status=rs.getString("status");
                 System.out.println("current status "+status);
                 status_label.textProperty().bind(Bindings.format("%s",status));
             }
+
+            String email = rs.getString("Email");
+            System.out.println(email);
+            udb_EmailLabel.textProperty().bind(Bindings.format("%s", email));
+
+
+            Blob blob = rs.getBlob("Picture");
+            if(blob != null) {
+                byte[] b = blob.getBytes(1, (int) blob.length());
+                BufferedImage img = ImageIO.read(new ByteArrayInputStream(b));
+                Image imgFX = SwingFXUtils.toFXImage(img, null);
+                profile_image.setImage(imgFX);
+            }
+
 
             hideAge_button.selectedProperty().addListener(new ChangeListener<Boolean>() {
                 @Override
@@ -357,45 +452,6 @@ public class ProfileController {
                     udb_FriendsListView.setVisible(!newValue);
                 }
             });
-
-
-
-
-            String email = rs.getString("Email");
-            System.out.println(email);
-            udb_EmailLabel.textProperty().bind(Bindings.format("%s", email));
-
-
-            Blob blob = rs.getBlob("Picture");
-            if(blob != null) {
-                byte[] b = blob.getBytes(1, (int) blob.length());
-                BufferedImage img = ImageIO.read(new ByteArrayInputStream(b));
-                Image imgFX = SwingFXUtils.toFXImage(img, null);
-                profile_image.setImage(imgFX);
-            }
-
-            if(firstShow==true)
-            {
-                ArrayList<String> pastPosts=new ArrayList<String>();
-                ArrayList<Timestamp> postsDate=new ArrayList<Timestamp>();
-                sql="Select * from posts where UserID=(Select UserID from User where UserName = ?);";
-                st=myConn.prepareStatement(sql);
-                st.setString(1,userName);
-                ResultSet re=st.executeQuery();
-                while(re.next())
-                {
-                    pastPosts.add(re.getString("Post"));
-                    postsDate.add(re.getTimestamp("Date_Posted"));
-                    System.out.println(re.getString("Post"));
-                    System.out.println(re.getDate("Date_Posted"));
-                }
-                for(int i=0;i<pastPosts.size();i++)
-                {
-                    udb_PostsListView.getItems().add(0, String.format("%1$-10s:", pastPosts.get(i)+" "+postsDate.get(i)));
-                    //    udb_PostsListView.getItems().add(0, String.format("%1$-10s:", pastPosts.get(i)));
-                }
-                firstShow=false;
-            }
 
 
             ArrayList<String> friendUserName = new ArrayList<String>();
@@ -437,6 +493,7 @@ public class ProfileController {
             System.out.println(e);
         }
     }
+
 
 
 }

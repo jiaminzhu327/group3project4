@@ -59,7 +59,10 @@
                <font>
                   <Font size="22.0" />
                </font></Label>
-            <Label fx:id="passwordDoesntMatch" layoutX="375.0" layoutY="732.0" prefHeight="48.0" prefWidth="412.0" text="Password doesn't match" textFill="RED" visible="false" />
+            <Label fx:id="passwordDoesntMatch" layoutX="375.0" layoutY="732.0" prefHeight="48.0" prefWidth="412.0" text="Password doesn't match" textFill="RED" visible="false">
+               <font>
+                  <Font size="20.0" />
+               </font></Label>
             <Label layoutX="381.0" layoutY="123.0" text="*Please fill all the following fileds*" textFill="RED">
                <font>
                   <Font size="16.0" />

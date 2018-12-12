@@ -1,0 +1,42 @@
+import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.stage.Stage;
+
+import java.net.URL;
+import java.util.ResourceBundle;
+
+public class FriendDetailController implements Initializable {
+
+    @FXML
+    public Label firstNameLabel;
+
+    @FXML
+    private Label lastNameLabel;
+
+    @FXML
+    private Label ageLabel;
+
+    @FXML
+    private Label emailLabel;
+
+    @FXML
+    private Button closeButton;
+
+    @FXML
+    private void closeDialog() {
+        Stage stage = (Stage) closeButton.getScene().getWindow();
+        stage.close();
+    }
+
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {}
+
+    public void setSelectedFriend(User friend) {
+        firstNameLabel.setText(friend.getFirstName());
+        lastNameLabel.setText(friend.getLastName());
+        ageLabel.setText(String.valueOf(friend.getAge()));
+        emailLabel.setText(friend.getEmail());
+    }
+}

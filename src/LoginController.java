@@ -106,6 +106,7 @@ public class LoginController {
                 login_error.setVisible(true);
             }
         }catch(Exception e){
+                login_error.setVisible(true);
                 System.out.println("Connection Failed Check Credential.");
                 System.out.println(e);
         }

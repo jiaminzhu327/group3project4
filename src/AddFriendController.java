@@ -1,29 +1,20 @@
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.geometry.Rectangle2D;
-import javafx.scene.Node;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
+import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
-import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
-import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
-import javafx.stage.Screen;
 import javafx.stage.Stage;
 
+import java.net.URL;
 import java.sql.*;
-import java.util.Random;
+import java.util.ResourceBundle;
 
 
-public class AddFriendController {
+public class AddFriendController implements Initializable {
 
     @FXML
     private TextField userName;
-
-    @FXML
-    private Button addfriend_button;
 
     @FXML
     private Button close_button;
@@ -34,70 +25,48 @@ public class AddFriendController {
     @FXML
     private Label found_label;
 
-    @FXML
-    private void addFriend(){
-        //connect to DB
-        //if username exists,found_label.setVisible(true) and add to friend list(could be hard), if not set notFound_label.setVisible(true);
-        try {
-            Class.forName("com.mysql.jdbc.Driver");
-            //Change information into yours
-            Connection myConn = DriverManager.getConnection("jdbc:mysql://localhost:3306/COMP585?autoReconnect=true&useSSL=false", "root", "root");
-            System.out.println("Successfully connected");
-            int check = LoginController.CheckUser(userName.getText());
-            if(check == 1) {
-                String sql = "Select UserID from User where Username = ?;";
-                PreparedStatement st = myConn.prepareStatement(sql);
-                st.setString(1, userName.getText());
-                ResultSet rs = st.executeQuery();
-                rs.next();
-                int friendID = rs.getInt("UserID");
-                int checkFriend = CheckFriend(LoginController.currentUserID, friendID);
-                found_label.setVisible(true);
-                if(checkFriend == 0) {
-                    sql = "Insert into Friends (UserID, FriendID) values (?, ?);";
-                    st = myConn.prepareStatement(sql);
-                    st.setInt(1, LoginController.currentUserID);
-                    st.setInt(2, friendID);
-                    st.executeUpdate();
-                    System.out.println("Successfully added.");
-                    found_label.setVisible(true);
-                }else{
-                    System.out.println("This user is already your friend.");
-                    return;
-                }
-            }else {
-                notFound_label.setVisible(true);
-            }
-        }catch(Exception e){
-            System.out.println(e);
-        }
+    public static User foundUser = null;
+
+    private ProfileController controller;
+    public void setProfileController(ProfileController controller) {
+        this.controller = controller;
     }
 
-    private int CheckFriend(int uID, int fID){
+    @FXML
+    private void addFriend() {
+        notFound_label.setVisible(false);
+        found_label.setVisible(false);
         try {
             Class.forName("com.mysql.jdbc.Driver");
-            //Change information into yours
-            Connection myConn = DriverManager.getConnection("jdbc:mysql://localhost:3306/COMP585?autoReconnect=true&useSSL=false", "root", "root");
-            System.out.println("Successfully connected");
-            String sql = "Select * from Friends where UserID = ? and FriendID = ?;";
-            PreparedStatement st = myConn.prepareStatement(sql);
-            st.setInt(1, uID);
-            st.setInt(2, fID);
-            ResultSet rs = st.executeQuery();
-            if(rs.first()){
-                return 1;
-            }else{
-                return 0;
+            Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/COMP585?autoReconnect=true&useSSL=false", "root", "root");
+            PreparedStatement ps = connection.prepareStatement("SELECT * FROM UserInfo WHERE UserID = (Select UserID from User where UserName = ?)");
+            ps.setString(1,userName.getText());
+            ResultSet rs = ps.executeQuery();
+            if(rs.next()) {
+                foundUser = new User(rs.getString("FirstName"), rs.getString("LastName"), rs.getInt("Age"));
+                foundUser.setId(rs.getInt("UserID"));
+                foundUser.setEmail(rs.getString("Email"));
             }
-        }catch(Exception e){
-            System.out.println(e);
-            return -1;
+            found_label.setVisible(true);
+
+        } catch (SQLException | ClassNotFoundException e) {
+            found_label.setVisible(false);
+            notFound_label.setVisible(true);
+            e.printStackTrace();
         }
     }
 
     @FXML
     public void handleCloseButtonAction(ActionEvent event) {
+        if(found_label.isVisible()) {
+            controller.AddUserToFriendList(foundUser);
+        }
         Stage stage = (Stage) close_button.getScene().getWindow();
         stage.close();
+    }
+
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+
     }
 }

@@ -2,6 +2,7 @@ public class User extends Person implements IDisplay
 {
     private String status;
     private boolean isAgeVis;
+    private String email;
     
     public User(String firstName , String lastName , int age)
     {
@@ -31,8 +32,24 @@ public class User extends Person implements IDisplay
     {
         return status;
     }
-    
+
+    public int getId() {
+        return id;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
     // setter
+    public void setId(int id) {
+        this.id = id;
+    }private int id;
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
     public void setStatus(String status)
     {
         this.status = status;
@@ -51,5 +68,10 @@ public class User extends Person implements IDisplay
     public boolean ageVis()
     {
         return isAgeVis;
+    }
+
+    @Override
+    public String toString() {
+        return getFullName();
     }
 }
