@@ -124,7 +124,7 @@ public class LoginController {
         stage.setResizable(false);
         stage.setScene(signUpPageScene);
         stage.show();
-        profileControllerInstance.showInfo(userName);
+        profileControllerInstance.showInfo();
 
     }
 

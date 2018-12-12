@@ -123,28 +123,28 @@ public class ProfileController {
 
     public void initialize(){
 
-        showInfo(LoginController.userName);
-        udb_FriendsListView.setOnMouseClicked(e -> {
-            selectedFriend = (User) udb_FriendsListView.getSelectionModel().getSelectedItem();
-            if (e.getClickCount() == 2) {
-                FXMLLoader loader = new FXMLLoader(getClass().getResource("FriendDetail.fxml"));
-                FriendDetailController detailController = new FriendDetailController();
-                loader.setController(detailController);
-                Parent signUpPageParent = null;
-                try {
-                    signUpPageParent = loader.load();
-                    detailController.setSelectedFriend(selectedFriend);
-                } catch (IOException ex) {
-                    System.err.println(ex.getMessage());
-                }
-                Scene signUpPageScene = new Scene(signUpPageParent);
-                Stage stage = new Stage();
-
-                stage.setResizable(false);
-                stage.setScene(signUpPageScene);
-                stage.show();
-            }
-        });
+        showInfo();
+//        udb_FriendsListView.setOnMouseClicked(e -> {
+//            selectedFriend = (User) udb_FriendsListView.getSelectionModel().getSelectedItem();
+//            if (e.getClickCount() == 2) {
+//                FXMLLoader loader = new FXMLLoader(getClass().getResource("FriendDetail.fxml"));
+//                FriendDetailController detailController = new FriendDetailController();
+//                loader.setController(detailController);
+//                Parent signUpPageParent = null;
+//                try {
+//                    signUpPageParent = loader.load();
+//                    detailController.setSelectedFriend(selectedFriend);
+//                } catch (IOException ex) {
+//                    System.err.println(ex.getMessage());
+//                }
+//                Scene signUpPageScene = new Scene(signUpPageParent);
+//                Stage stage = new Stage();
+//
+//                stage.setResizable(false);
+//                stage.setScene(signUpPageScene);
+//                stage.show();
+//            }
+//        });
 
     }
 
@@ -185,6 +185,11 @@ public class ProfileController {
 
     @FXML
     private void openfriendprofileTest() throws IOException{
+        int selectedIdx = udb_FriendsListView.getSelectionModel().getSelectedIndex();
+        System.out.println(selectedIdx);
+        String selectUser = (String) udb_FriendsListView.getItems().get(selectedIdx);
+        System.out.println(selectUser);
+        FriendprofileController.selectedUserName = selectUser;
         Parent signUpPageParent = FXMLLoader.load(getClass().getResource("friendprofile_page.fxml"));
         Scene signUpPageScene = new Scene(signUpPageParent);
         Stage stage = new Stage();
@@ -387,11 +392,24 @@ public class ProfileController {
     private void removeFriend(){
         final int selectedIdx = udb_FriendsListView.getSelectionModel().getSelectedIndex();
         udb_FriendsListView.getItems().remove(selectedIdx);
+        String removeUser = (String) udb_FriendsListView.getItems().get(selectedIdx);
+        try {
+            Class.forName("com.mysql.jdbc.Driver");
+            Connection myConn = DriverManager.getConnection("jdbc:mysql://localhost:3306/COMP585?autoReconnect=true&useSSL=false", "root", "root");
+            String sql = "delete from Friends where FriendID = (Select UserID from User where UserName = ?) and UserID = ?;";
+            PreparedStatement st = myConn.prepareStatement(sql);
+            st.setString(1, removeUser);
+            st.setInt(2, LoginController.currentUserID);
+            st.execute();
+            System.out.println("Successfully removed");
+        }catch(Exception e){
+            System.out.println(e);
+        }
     }
 
-    public void showInfo(String userName){
+    public void showInfo(){
         try {
-            System.out.println(firstShow);
+            userName = LoginController.userName;
             Class.forName("com.mysql.jdbc.Driver");
             Connection myConn = DriverManager.getConnection("jdbc:mysql://localhost:3306/COMP585?autoReconnect=true&useSSL=false", "root", "root");
             java.sql.Statement myStmt = myConn.createStatement();
@@ -488,6 +506,7 @@ public class ProfileController {
             });
 
 
+            udb_FriendsListView.getItems().clear();
             ArrayList<String> friendUserName = new ArrayList<String>();
             //rrayList<int> friendUserID = new ArrayList<int>();
             sql = "Select * from User where UserID In (Select FriendID from Friends where UserID = ?);";
