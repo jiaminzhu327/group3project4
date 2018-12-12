@@ -107,6 +107,14 @@ public class ProfileController {
     @FXML
     private Button friendprofile_test_button;
 
+    @FXML
+    private TextField updateAge_textfiled;
+
+    @FXML
+    private Button updateAge_button;
+
+
+
 
     public String userName="";
     private boolean firstShow=true;
@@ -262,6 +270,32 @@ public class ProfileController {
                 }
             }
         });
+    }
+
+    @FXML
+    private void updateAge(){
+        updateAge_button.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                udb_AgeLabel.textProperty().bind(Bindings.format("%s",updateAge_textfiled.getText()));
+                String age = updateAge_textfiled.getText();
+                try {
+                    Class.forName("com.mysql.jdbc.Driver");
+                    Connection myConn=DriverManager.getConnection("jdbc:mysql://localhost:3306/COMP585?autoReconnect=true&useSSL=false", "root", "root");
+                    String sql="Update UserInfo set Age=? where UserID=?";
+                    PreparedStatement st = myConn.prepareStatement(sql);
+                    st.setString(1,age);
+                    st.setInt(2, LoginController.currentUserID);
+                    st.executeUpdate();
+                }
+                catch(Exception e) {
+                    System.out.println("Age store fail");
+                    System.out.println(e);
+                }
+            }
+        });
+
+
     }
 
     @FXML
